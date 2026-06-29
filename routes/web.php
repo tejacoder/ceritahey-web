@@ -14,6 +14,11 @@ use Illuminate\Support\Facades\Route;
 // publik
 Route::get('/', [ProductController::class, 'index'])->name('home');
 Route::get('/product/{product:slug}', [ProductController::class, 'show'])->name('product.show');
+Route::view('/faq', 'faq')->name('faq');
+Route::view('/kebijakan-privasi', 'privacy')->name('privacy');
+Route::view('/tentang-kami', 'about')->name('about');
+Route::view('/syarat-ketentuan', 'terms')->name('terms');
+Route::view('/kontak', 'contact')->name('contact');
 
 // auth
 Route::middleware('guest')->group(function () {

@@ -263,13 +263,103 @@
   @stack('scripts')
 
   {{-- Footer --}}
-  <footer class="border-t border-amber-100/60 py-10 mt-16 bg-white/50">
-    <div class="section-container text-center text-sm text-stone-400">
-      <p class="font-heading font-semibold text-stone-700">CeritaHey</p>
-      <p class="mt-1">Buku Cerita Digital Anak — Indonesia</p>
-      <p class="mt-1">&copy; {{ date('Y') }} CeritaHey. All rights reserved.</p>
+  <footer class="border-t border-amber-100 mt-32 bg-white">
+    <div class="section-container" style="padding-top:56px;padding-bottom:48px;">
+      <div style="display:grid;grid-template-columns:1fr;gap:40px;" class="footer-grid">
+
+        {{-- Brand col --}}
+        <div>
+          <a href="{{ route('home') }}" class="font-heading text-2xl font-bold text-stone-900 tracking-tight">
+            📚 CeritaHey
+          </a>
+          <p class="mt-3 text-sm text-stone-500 leading-relaxed" style="max-width:280px;">
+            Platform buku cerita digital bergambar full color untuk anak Indonesia.
+            Terjangkau, menyenangkan, dan edukatif.
+          </p>
+          <div class="mt-5 flex items-center gap-3">
+            <span class="badge badge-success text-xs">🔒 Pembayaran Aman</span>
+            <span class="badge badge-warning text-xs">✅ Produk Digital</span>
+          </div>
+        </div>
+
+        {{-- Navigasi --}}
+        <div>
+          <h3 class="text-xs font-bold text-stone-400 uppercase tracking-widest mb-4">Navigasi</h3>
+          <ul class="space-y-3 text-sm">
+            <li><a href="{{ route('home') }}" class="text-stone-600 hover:text-amber-600 transition-colors font-medium">🏠 Beranda</a></li>
+            @auth
+            <li><a href="{{ route('order.my') }}" class="text-stone-600 hover:text-amber-600 transition-colors font-medium">📦 Pesanan Saya</a></li>
+            <li><a href="{{ route('settings') }}" class="text-stone-600 hover:text-amber-600 transition-colors font-medium">⚙️ Pengaturan</a></li>
+            @else
+            <li><a href="{{ route('login') }}" class="text-stone-600 hover:text-amber-600 transition-colors font-medium">🔑 Masuk</a></li>
+            <li><a href="{{ route('register') }}" class="text-stone-600 hover:text-amber-600 transition-colors font-medium">✨ Daftar Gratis</a></li>
+            @endauth
+          </ul>
+        </div>
+
+        {{-- Informasi --}}
+        <div>
+          <h3 class="text-xs font-bold text-stone-400 uppercase tracking-widest mb-4">Informasi</h3>
+          <ul class="space-y-3 text-sm">
+            <li><a href="{{ route('about') }}" class="text-stone-600 hover:text-amber-600 transition-colors font-medium">📚 Tentang Kami</a></li>
+            <li><a href="{{ route('faq') }}" class="text-stone-600 hover:text-amber-600 transition-colors font-medium">❓ FAQ</a></li>
+            <li><a href="{{ route('privacy') }}" class="text-stone-600 hover:text-amber-600 transition-colors font-medium">🔐 Kebijakan Privasi</a></li>
+            <li><a href="{{ route('terms') }}" class="text-stone-600 hover:text-amber-600 transition-colors font-medium">⚖️ Syarat & Ketentuan</a></li>
+          </ul>
+        </div>
+
+        {{-- Kontak --}}
+        <div>
+          <h3 class="text-xs font-bold text-stone-400 uppercase tracking-widest mb-4">Kontak</h3>
+          <ul class="space-y-3 text-sm text-stone-600">
+            <li>
+              <a href="{{ route('contact') }}" class="text-stone-600 hover:text-amber-600 transition-colors font-medium">📞 Kontak Support</a>
+            </li>
+            <li class="flex items-start gap-2">
+              <span>📧</span>
+              <a href="mailto:aksendigitalkreatif@gmail.com" class="hover:underline">aksendigitalkreatif@gmail.com</a>
+            </li>
+            <li class="flex items-start gap-2">
+              <span>⏰</span>
+              <span>Senin–Jumat<br>09.00–17.00 WIB</span>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+      {{-- Payment badges --}}
+      <div class="mt-12 pt-8 border-t border-stone-100">
+        <div class="flex flex-wrap items-center gap-3 mb-6">
+          <span class="text-xs text-stone-400 font-semibold mr-2">Metode Pembayaran:</span>
+          @foreach(['QRIS', 'BRI VA', 'BNI VA', 'BCA VA', 'OVO'] as $pm)
+          <span style="display:inline-flex;align-items:center;padding:4px 10px;border-radius:8px;border:1px solid #e7e5e4;background:#fff;font-size:11px;font-weight:700;color:#57534e;">{{ $pm }}</span>
+          @endforeach
+        </div>
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+          <p class="text-sm text-stone-400">
+            &copy; {{ date('Y') }} CeritaHey. All rights reserved.
+          </p>
+          <div class="flex flex-wrap items-center gap-4 text-xs text-stone-400">
+            <a href="{{ route('about') }}" class="hover:text-amber-600 transition-colors">Tentang Kami</a>
+            <a href="{{ route('privacy') }}" class="hover:text-amber-600 transition-colors">Kebijakan Privasi</a>
+            <a href="{{ route('terms') }}" class="hover:text-amber-600 transition-colors">Syarat & Ketentuan</a>
+            <a href="{{ route('faq') }}" class="hover:text-amber-600 transition-colors">FAQ</a>
+            <a href="{{ route('contact') }}" class="hover:text-amber-600 transition-colors">Kontak</a>
+          </div>
+        </div>
+      </div>
+
     </div>
+
+    <style>
+      @media (min-width: 640px) {
+        .footer-grid { grid-template-columns: 2fr 1fr 1fr 1fr !important; }
+      }
+      .space-y-3 > * + * { margin-top: 0.75rem; }
+    </style>
   </footer>
+
 
 </body>
 </html>
