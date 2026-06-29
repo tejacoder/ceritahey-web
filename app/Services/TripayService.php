@@ -118,11 +118,11 @@ class TripayService
         return null;
     }
 
-    /** verifikasi callback signature */
-    public function verifyCallback(array $payload): bool
+    /** verifikasi callback signature - hash dari raw JSON body sesuai docs Tripay */
+    public function verifyCallback(string $rawJson, string $signature): bool
     {
-        $signature = hash_hmac('sha256', $payload['merchant_ref'] . ($payload['total_amount'] ?? $payload['amount']) . $payload['status'], $this->privateKey);
-        return hash_equals($signature, $payload['signature'] ?? '');
+        $calculated = hash_hmac('sha256', $rawJson, $this->privateKey);
+        return hash_equals($calculated, $signature);
     }
 
     protected function generateSignature(string $merchantRef, int $amount): string

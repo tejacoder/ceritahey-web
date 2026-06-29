@@ -116,10 +116,25 @@ class PaymentController extends Controller
     /** callback dari Tripay */
     public function callback(Request $request): void
     {
-        $payload = $request->all();
+        $rawJson    = $request->getContent();
+        $signature  = $request->header('X-Callback-Signature');
+        $payload    = json_decode($rawJson, true);
+
+        if (!$payload) {
+            Log::error('Tripay callback: No payload');
+            abort(400, 'Invalid payload');
+        }
+
+        $payload['signature'] = $signature;
         Log::info('Tripay callback received', $payload);
 
-        if (!$this->tripay->verifyCallback($payload)) {
+        Log::info('Tripay Callback Data: ' . $payload['merchant_ref'] . $payload['total_amount'] . $payload['status']);
+
+        $calculatedSig = hash_hmac('sha256', $rawJson, config('tripay.private_key'));
+        Log::info('Calculated Sig: ' . $calculatedSig);
+        Log::info('Payload Sig: ' . $signature);
+
+        if (!$this->tripay->verifyCallback($rawJson, $signature)) {
             Log::warning('Tripay callback signature invalid', $payload);
             abort(403, 'Invalid signature');
         }
