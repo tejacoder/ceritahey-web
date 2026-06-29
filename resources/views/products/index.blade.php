@@ -37,6 +37,12 @@
             <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
             Lihat Paket
           </a>
+          <a href="{{ config('services.google.sample_gdrive_url') }}" target="_blank" class="btn-outline" style="border-color: #10b981; background: #ecfdf5; color: #047857; display: inline-flex; align-items: center; gap: 8px;">
+            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+            </svg>
+            Download Sampel
+          </a>
           <a href="#tentang" class="btn-outline">Kenalan Dulu</a>
         </div>
 

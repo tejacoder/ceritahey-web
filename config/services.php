@@ -35,4 +35,8 @@ return [
         ],
     ],
 
+    'google' => [
+        'sample_gdrive_url' => env('SAMPLE_GDRIVE_URL', 'https://drive.google.com'),
+    ],
+
 ];
