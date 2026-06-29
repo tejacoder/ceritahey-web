@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Order;
 use App\Models\Payment;
 use App\Services\TripayService;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -114,7 +115,7 @@ class PaymentController extends Controller
     }
 
     /** callback dari Tripay */
-    public function callback(Request $request): void
+    public function callback(Request $request): JsonResponse
     {
         $rawJson    = $request->getContent();
         $signature  = $request->header('X-Callback-Signature');
@@ -165,5 +166,7 @@ class PaymentController extends Controller
             default   => 'pending',
         };
         $payment->order->update(['status' => $orderStatus]);
+
+        return response()->json(['success' => true]);
     }
 }
