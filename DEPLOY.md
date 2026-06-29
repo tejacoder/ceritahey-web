@@ -13,7 +13,7 @@
 
 ```bash
 cd /var/www/
-git clone https://github.com/TUANMU/ceritahey-web.git
+git clone https://github.com/tejacoder/ceritahey-web.git
 cd ceritahey-web
 composer install --no-dev --optimize-autoloader
 npm ci && npm run build
@@ -32,7 +32,7 @@ nano .env  # isi sesuai server
 APP_NAME=CeritaHey
 APP_ENV=production
 APP_DEBUG=false
-APP_URL=https://ceritahey.com   # domain production
+APP_URL=https://ceritahey.aksendigi.com   # domain production
 
 DB_CONNECTION=mysql              # or sqlite
 DB_HOST=127.0.0.1
@@ -101,19 +101,19 @@ File `/etc/nginx/sites-available/ceritahey`:
 ```nginx
 server {
     listen 80;
-    server_name ceritahey.com www.ceritahey.com;
+    server_name ceritahey.aksendigi.com www.ceritahey.aksendigi.com;
     return 301 https://$server_name$request_uri;
 }
 
 server {
     listen 443 ssl http2;
-    server_name ceritahey.com www.ceritahey.com;
+    server_name ceritahey.aksendigi.com www.ceritahey.aksendigi.com;
 
     root /var/www/ceritahey-web/public;
     index index.php;
 
-    ssl_certificate /etc/letsencrypt/live/ceritahey.com/fullchain.pem;
-    ssl_certificate_key /etc/letsencrypt/live/ceritahey.com/privkey.pem;
+    ssl_certificate /etc/letsencrypt/live/ceritahey.aksendigi.com/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/ceritahey.aksendigi.com/privkey.pem;
 
     add_header X-Frame-Options "SAMEORIGIN";
     add_header X-Content-Type-Options "nosniff";
@@ -141,7 +141,7 @@ SSL via Let's Encrypt:
 
 ```bash
 sudo apt install certbot python3-certbot-nginx
-sudo certbot --nginx -d ceritahey.com -d www.ceritahey.com
+sudo certbot --nginx -d ceritahey.aksendigi.com -d www.ceritahey.aksendigi.com
 ```
 
 ## 8. Tripay Payment Gateway
@@ -149,8 +149,8 @@ sudo certbot --nginx -d ceritahey.com -d www.ceritahey.com
 Tripay callback endpoint: `POST /payment/callback`
 
 Pastikan di Tripay dashboard:
-- Callback URL: `https://ceritahey.com/payment/callback`
-- Return URL: `https://ceritahey.com/payment/{payment}/waiting`
+- Callback URL: `https://ceritahey.aksendigi.com/payment/callback`
+- Return URL: `https://ceritahey.aksendigi.com/payment/{payment}/waiting`
 
 Set .env vars (cek .env.example):
 
@@ -200,8 +200,8 @@ php artisan up                  # live
 ```
 
 Coba akses:
-- Home: https://ceritahey.com/
-- Register: https://ceritahey.com/register
-- Login: https://ceritahey.com/login
-- Admin: https://ceritahey.com/admin (butuh user admin)
-- Tripay callback: `POST https://ceritahey.com/payment/callback`
+- Home: https://ceritahey.aksendigi.com/
+- Register: https://ceritahey.aksendigi.com/register
+- Login: https://ceritahey.aksendigi.com/login
+- Admin: https://ceritahey.aksendigi.com/admin (butuh user admin)
+- Tripay callback: `POST https://ceritahey.aksendigi.com/payment/callback`

@@ -121,7 +121,7 @@ class TripayService
     /** verifikasi callback signature */
     public function verifyCallback(array $payload): bool
     {
-        $signature = hash_hmac('sha256', $payload['merchant_ref'] . $payload['amount'] . $payload['status'], $this->privateKey);
+        $signature = hash_hmac('sha256', $payload['merchant_ref'] . ($payload['total_amount'] ?? $payload['amount']) . $payload['status'], $this->privateKey);
         return hash_equals($signature, $payload['signature'] ?? '');
     }
 
