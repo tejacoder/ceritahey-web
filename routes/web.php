@@ -49,7 +49,8 @@ Route::middleware('auth')->group(function () {
     // admin
     Route::prefix('admin')->name('admin.')->middleware('admin')->group(function () {
         Route::get('/', [AdminController::class, 'index'])->name('dashboard');
-        Route::resource('products', AdminProductController::class)->except('show');
+        Route::post('products/{product}', [AdminProductController::class, 'update'])->name('products.update');
+        Route::resource('products', AdminProductController::class)->except(['show', 'update']);
         Route::get('orders', [AdminOrderController::class, 'index'])->name('orders.index');
         Route::get('orders/{order}', [AdminOrderController::class, 'show'])->name('orders.show');
     });

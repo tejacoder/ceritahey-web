@@ -12,11 +12,26 @@
   <div class="card overflow-hidden">
     <table class="w-full text-sm">
       <thead class="bg-stone-50 text-left">
-        <tr><th class="p-3 font-semibold">Nama</th><th class="p-3 font-semibold">Buku</th><th class="p-3 font-semibold">Harga</th><th class="p-3 font-semibold">Aktif</th><th class="p-3 font-semibold">Urutan</th><th class="p-3 font-semibold"></th></tr>
+        <tr>
+          <th class="p-3 font-semibold">Cover</th>
+          <th class="p-3 font-semibold">Nama</th>
+          <th class="p-3 font-semibold">Buku</th>
+          <th class="p-3 font-semibold">Harga</th>
+          <th class="p-3 font-semibold">Aktif</th>
+          <th class="p-3 font-semibold">Urutan</th>
+          <th class="p-3 font-semibold"></th>
+        </tr>
       </thead>
       <tbody class="divide-y divide-stone-100">
         @foreach($products as $p)
           <tr>
+            <td class="p-3">
+              @if($p->cover_image_url)
+                <img src="{{ $p->cover_image_url }}" alt="{{ $p->image_alt ?? $p->name }}" class="w-12 h-12 object-cover rounded-lg border">
+              @else
+                <div class="w-12 h-12 rounded-lg bg-stone-100 flex items-center justify-center text-stone-400 text-xs">No Cover</div>
+              @endif
+            </td>
             <td class="p-3 font-semibold">{{ $p->name }}</td>
             <td class="p-3">{{ $p->book_count }}</td>
             <td class="p-3">Rp{{ number_format($p->price, 0, ',', '.') }}</td>
