@@ -30,6 +30,11 @@ Route::middleware('guest')->group(function () {
 
 Route::post('/logout', [LogoutController::class, 'destroy'])->name('logout');
 
+// Keranjang
+Route::get('/cart', [\App\Http\Controllers\CartController::class, 'index'])->name('cart.index');
+Route::get('/cart/add/{product}', [\App\Http\Controllers\CartController::class, 'add'])->name('cart.add');
+Route::post('/cart/remove/{product}', [\App\Http\Controllers\CartController::class, 'remove'])->name('cart.remove');
+
 // user
 Route::middleware('auth')->group(function () {
     Route::get('/order/create/{product:slug}', [OrderController::class, 'create'])->name('order.create');

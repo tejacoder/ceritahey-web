@@ -183,18 +183,13 @@
             <p class="text-xs text-stone-400 mt-0.5">Rp{{ number_format(round($p->price/$p->book_count), 0, ',', '.') }}/buku</p>
           </div>
 
-          <div class="mt-auto pt-5">
-            @auth
-              <a href="{{ route('order.create', $p->slug) }}" class="btn-cta text-sm px-5 py-2.5 w-full">
-                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 100 4 2 2 0 000-4z"/></svg>
-                Beli
-              </a>
-            @else
-              <a href="{{ route('login') }}" class="btn-cta text-sm px-5 py-2.5 w-full">
-                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"/></svg>
-                Masuk & Beli
-              </a>
-            @endauth
+          <div class="mt-auto pt-5 space-y-2">
+            <a href="{{ route('product.show', $p->slug) }}" class="btn-outline text-sm px-5 py-2 w-full justify-center">
+              🔍 Detail Paket
+            </a>
+            <a href="{{ route('cart.add', [$p, 'redirect' => 'cart']) }}" class="btn-cta text-sm px-5 py-2 w-full justify-center">
+              🚀 Beli Sekarang
+            </a>
           </div>
         </div>
       @endforeach

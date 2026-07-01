@@ -227,6 +227,15 @@
       </a>
       <div class="flex items-center gap-1 sm:gap-3 text-sm font-bold">
         <a href="{{ route('home') }}" class="px-3 py-2 rounded-xl text-stone-600 hover:text-amber-600 hover:bg-amber-50 transition-colors focus-ring" aria-current="@if(request()->routeIs('home')) page @endif">Beranda</a>
+        <a href="{{ route('cart.index') }}" class="relative px-3 py-2 rounded-xl text-stone-600 hover:text-amber-600 hover:bg-amber-50 transition-colors focus-ring flex items-center gap-1" aria-current="@if(request()->routeIs('cart.index')) page @endif">
+          <span>🛒</span>
+          <span class="hidden sm:inline">Keranjang</span>
+          @if(session()->has('cart') && count(session('cart')) > 0)
+            <span class="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-orange-500 text-[10px] font-black text-white">
+              {{ count(session('cart')) }}
+            </span>
+          @endif
+        </a>
         @auth
           @if(Auth::user()->isAdmin())
             <a href="{{ route('admin.dashboard') }}" class="px-3 py-2 rounded-xl text-stone-600 hover:text-amber-600 hover:bg-amber-50 transition-colors focus-ring">Admin</a>

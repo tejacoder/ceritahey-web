@@ -19,19 +19,34 @@ class OrderController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $validated = $request->validate([
-            'product_id' => ['required', 'exists:products,id'],
+            'product_id' => ['nullable', 'exists:products,id'],
             'customer_name'  => ['required', 'string', 'max:100'],
             'customer_email' => ['required', 'email', 'max:100'],
             'customer_phone' => ['nullable', 'string', 'max:20'],
             'notes' => ['nullable', 'string', 'max:500'],
         ]);
 
-        $product = Product::findOrFail($validated['product_id']);
+        $products = collect();
+
+        if (!empty($validated['product_id'])) {
+            $products->push(Product::findOrFail($validated['product_id']));
+        } else {
+            $cartIds = session()->get('cart', []);
+            if (empty($cartIds)) {
+                return redirect()->route('cart.index')->with('error', 'Keranjang belanja kosong.');
+            }
+            $products = Product::whereIn('id', $cartIds)->active()->get();
+            if ($products->isEmpty()) {
+                return redirect()->route('cart.index')->with('error', 'Produk tidak ditemukan.');
+            }
+        }
+
+        $totalAmount = $products->sum('price');
 
         $order = Order::create([
             'user_id'        => Auth::id(),
             'invoice'        => 'INV/' . date('Ymd') . '/' . strtoupper(substr(uniqid(), -6)),
-            'total_amount'   => $product->price,
+            'total_amount'   => $totalAmount,
             'status'         => 'pending',
             'customer_name'  => $validated['customer_name'],
             'customer_email' => $validated['customer_email'],
@@ -39,14 +54,19 @@ class OrderController extends Controller
             'notes'          => $validated['notes'],
         ]);
 
-        // order item
-        $order->items()->create([
-            'product_id'   => $product->id,
-            'product_name' => $product->name,
-            'book_count'   => $product->book_count,
-            'price'        => $product->price,
-            'subtotal'     => $product->price,
-        ]);
+        foreach ($products as $product) {
+            $order->items()->create([
+                'product_id'   => $product->id,
+                'product_name' => $product->name,
+                'book_count'   => $product->book_count,
+                'price'        => $product->price,
+                'subtotal'     => $product->price,
+            ]);
+        }
+
+        if (empty($validated['product_id'])) {
+            session()->forget('cart');
+        }
 
         return redirect()->route('payment.channels', $order);
     }
@@ -64,7 +84,7 @@ class OrderController extends Controller
         return view('orders.show', compact('order'));
     }
 
-    public function download(Order $order)
+    public function download(Order $order, Request $request)
     {
         if ($order->user_id !== Auth::id()) {
             abort(404);
@@ -74,8 +94,16 @@ class OrderController extends Controller
             return redirect()->route('order.show', $order)->with('error', 'Pesanan belum dibayar.');
         }
 
-        // Cari item pertama & ambil product's download_url
-        $product = $order->items->first()?->product;
+        $itemId = $request->query('item');
+        $item = null;
+        if ($itemId) {
+            $item = $order->items()->where('id', $itemId)->first();
+        }
+        if (!$item) {
+            $item = $order->items->first();
+        }
+
+        $product = $item?->product;
 
         if ($product && $product->download_url) {
             return redirect()->away($product->download_url);
