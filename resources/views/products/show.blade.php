@@ -44,7 +44,9 @@
 
         <div class="space-y-2">
           <h2 class="text-sm font-bold text-stone-800 uppercase tracking-wider">Deskripsi</h2>
-          <p class="text-stone-600 text-sm leading-relaxed">{{ $product->description ?? 'Tidak ada deskripsi untuk paket ini.' }}</p>
+          <div class="text-stone-600 text-sm leading-relaxed wysiwyg-content">
+            {!! $product->description ?? 'Tidak ada deskripsi untuk paket ini.' !!}
+          </div>
         </div>
 
         {{-- Fitur / Keunggulan Paket --}}
@@ -84,4 +86,15 @@
     </div>
   </div>
 </div>
+
+<style>
+  .wysiwyg-content p { margin-bottom: 0.75rem; }
+  .wysiwyg-content p:last-child { margin-bottom: 0; }
+  .wysiwyg-content ul { list-style-type: disc; margin-left: 1.25rem; margin-bottom: 0.75rem; }
+  .wysiwyg-content ol { list-style-type: decimal; margin-left: 1.25rem; margin-bottom: 0.75rem; }
+  .wysiwyg-content li { margin-bottom: 0.25rem; }
+  .wysiwyg-content strong { font-weight: 700; color: #1c1917; }
+  .wysiwyg-content em { font-style: italic; }
+  .wysiwyg-content u { text-decoration: underline; }
+</style>
 @endsection

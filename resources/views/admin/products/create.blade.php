@@ -40,7 +40,7 @@
         </div>
         <div>
           <label class="label">Deskripsi</label>
-          <textarea name="description" class="input-field" rows="3">{{ old('description') }}</textarea>
+          <textarea id="description" name="description" class="input-field" rows="3">{{ old('description') }}</textarea>
         </div>
         <div>
           <label class="label">Jumlah Buku</label>
@@ -68,3 +68,21 @@
   </div>
 </div>
 @endsection
+
+@push('scripts')
+<script src="https://cdn.ckeditor.com/ckeditor5/41.1.0/classic/ckeditor.js"></script>
+<style>
+  .ck-editor__editable_inline {
+    min-height: 200px;
+  }
+</style>
+<script>
+  ClassicEditor
+    .create(document.querySelector('#description'), {
+      toolbar: ['heading', '|', 'bold', 'italic', 'bulletedList', 'numberedList', '|', 'undo', 'redo']
+    })
+    .catch(error => {
+      console.error(error);
+    });
+</script>
+@endpush
