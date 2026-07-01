@@ -7,7 +7,7 @@
 
   {{-- Header --}}
   <div class="animate-in text-center mb-14" style="max-width:600px;margin-left:auto;margin-right:auto;">
-    <span class="badge badge-secondary mb-4" style="font-size:13px;">🔐 Legal</span>
+    <span class="badge badge-secondary mb-4" style="font-size:13px;"><i class="fa-solid fa-shield-halved mr-1"></i> Legal</span>
     <h1 class="section-title mt-2">Kebijakan Privasi</h1>
     <p class="mt-4 text-stone-500 text-sm">
       Terakhir diperbarui: <strong>{{ date('d F Y') }}</strong>
@@ -51,7 +51,7 @@
       </p>
       <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:12px;padding:16px 20px;margin:16px 0;">
         <p style="margin:0;color:#065f46;font-size:14px;">
-          🔒 <strong>Aman:</strong> Koneksi kami dilindungi dengan enkripsi SSL/TLS. Data pembayaran tidak pernah melewati atau disimpan di server CeritaHey.
+          <i class="fa-solid fa-lock text-emerald-600 mr-1.5"></i> <strong>Aman:</strong> Koneksi kami dilindungi dengan enkripsi SSL/TLS. Data pembayaran tidak pernah melewati atau disimpan di server CeritaHey.
         </p>
       </div>
 
@@ -99,7 +99,7 @@
         hubungi kami:
       </p>
       <div style="background:#fffbeb;border:1px solid #fde68a;border-radius:12px;padding:20px 24px;margin-top:12px;">
-        <p style="margin:0 0 6px;font-weight:700;color:#92400e;">📬 CeritaHey</p>
+        <p style="margin:0 0 6px;font-weight:700;color:#92400e;"><i class="fa-solid fa-envelope-open-text text-amber-600 mr-1.5"></i> CeritaHey</p>
         <p style="margin:0;color:#78350f;font-size:14px;">
           Email: <a href="mailto:aksendigitalkreatif@gmail.com" style="color:#b45309;">aksendigitalkreatif@gmail.com</a><br>
           Jam operasional: Senin–Jumat, 09.00–17.00 WIB
@@ -113,7 +113,7 @@
   {{-- Back links --}}
   <div class="animate-in animate-in-d2 flex items-center justify-center gap-6" style="padding-top: 20px;">
     <a href="{{ route('home') }}" class="btn-outline" style="padding:10px 20px;font-size:14px;">← Kembali ke Beranda</a>
-    <a href="{{ route('faq') }}" class="btn-outline" style="padding:10px 20px;font-size:14px;">❓ Lihat FAQ</a>
+    <a href="{{ route('faq') }}" class="btn-outline" style="padding:10px 20px;font-size:14px;"><i class="fa-solid fa-circle-question mr-1"></i> Lihat FAQ</a>
   </div>
 
 </div>

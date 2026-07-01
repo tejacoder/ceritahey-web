@@ -7,7 +7,7 @@
 
   {{-- Header --}}
   <div class="animate-in text-center mb-14" style="max-width:600px;margin-left:auto;margin-right:auto;">
-    <span class="badge badge-warning mb-4" style="font-size:13px;">📞 Kontak Support</span>
+    <span class="badge badge-warning mb-4" style="font-size:13px;"><i class="fa-solid fa-phone mr-1"></i> Kontak Support</span>
     <h1 class="section-title mt-2">Hubungi Kami</h1>
     <p class="mt-4 text-stone-500 text-base leading-relaxed">
       Ada kendala pembayaran, unduhan file, atau punya pertanyaan lain? Tim support kami siap membantumu.
@@ -23,8 +23,8 @@
       
       <div style="display:flex;flex-direction:column;gap:24px;">
         <div style="display:flex;align-items:flex-start;gap:16px;">
-          <div style="font-size:32px;background:#fef3c7;width:56px;height:56px;border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-            📧
+          <div style="font-size:32px;background:#fef3c7;width:56px;height:56px;border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:#d97706;">
+            <i class="fa-solid fa-envelope"></i>
           </div>
           <div>
             <h3 style="font-size:16px;font-weight:700;color:#1c1917;margin:0 0 4px;">Email Support</h3>
@@ -36,8 +36,8 @@
         </div>
 
         <div style="display:flex;align-items:flex-start;gap:16px;">
-          <div style="font-size:32px;background:#fef3c7;width:56px;height:56px;border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-            ⏰
+          <div style="font-size:32px;background:#fef3c7;width:56px;height:56px;border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:#d97706;">
+            <i class="fa-solid fa-clock"></i>
           </div>
           <div>
             <h3 style="font-size:16px;font-weight:700;color:#1c1917;margin:0 0 4px;">Jam Operasional</h3>
@@ -49,8 +49,8 @@
         </div>
 
         <div style="display:flex;align-items:flex-start;gap:16px;">
-          <div style="font-size:32px;background:#fef3c7;width:56px;height:56px;border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-            🏢
+          <div style="font-size:32px;background:#fef3c7;width:56px;height:56px;border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:#d97706;">
+            <i class="fa-solid fa-building"></i>
           </div>
           <div>
             <h3 style="font-size:16px;font-weight:700;color:#1c1917;margin:0 0 4px;">Badan Usaha / Pengelola</h3>
@@ -65,13 +65,13 @@
 
     {{-- Card 2: FAQ CTA --}}
     <div class="bento-card text-center" style="padding:48px;background:linear-gradient(135deg,#fffbeb,#fff7ed);display:flex;flex-direction:column;justify-content:center;align-items:center;">
-      <div style="font-size:48px;margin-bottom:16px;">❓</div>
+      <div style="font-size:48px;margin-bottom:16px;color:#d97706;"><i class="fa-solid fa-circle-question"></i></div>
       <h2 class="font-heading text-2xl font-bold text-stone-900 mb-3">Punya Pertanyaan Lain?</h2>
       <p class="text-stone-500 text-sm mb-6" style="max-width:320px;margin-left:auto;margin-right:auto;line-height:1.6;">
         Sebelum menghubungi kami, kamu mungkin bisa menemukan jawaban instan di halaman FAQ kami.
       </p>
       <a href="{{ route('faq') }}" class="btn-cta" style="padding:14px 32px;font-size:15px;">
-        🔍 Baca Halaman FAQ
+        <i class="fa-solid fa-magnifying-glass"></i> Baca Halaman FAQ
       </a>
     </div>
 

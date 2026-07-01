@@ -7,7 +7,7 @@
 
   {{-- Header --}}
   <div class="animate-in text-center mb-14" style="max-width:600px;margin-left:auto;margin-right:auto;">
-    <span class="badge badge-warning mb-4" style="font-size:13px;">📚 Tentang Kami</span>
+    <span class="badge badge-warning mb-4" style="font-size:13px;"><i class="fa-solid fa-book mr-1"></i> Tentang Kami</span>
     <h1 class="section-title mt-2">Mengenal CeritaHey</h1>
     <p class="mt-4 text-stone-500 text-base leading-relaxed">
       Platform buku cerita digital bergambar full color untuk anak Indonesia yang terjangkau, menyenangkan, dan edukatif.
@@ -55,7 +55,7 @@
       </p>
       
       <div style="background:#fffbeb;border:1px solid #fde68a;border-radius:12px;padding:20px 24px;margin-top:12px;">
-        <p style="margin:0 0 6px;font-weight:700;color:#92400e;">📬 Aksen Digital Kreatif (CeritaHey)</p>
+        <p style="margin:0 0 6px;font-weight:700;color:#92400e;"><i class="fa-solid fa-envelope-open-text text-amber-600 mr-1.5"></i> Aksen Digital Kreatif (CeritaHey)</p>
         <p style="margin:0;color:#78350f;font-size:14px;">
           Email: <a href="mailto:aksendigitalkreatif@gmail.com" style="color:#b45309;">aksendigitalkreatif@gmail.com</a><br>
           Jam operasional: Senin–Jumat, 09.00–17.00 WIB
@@ -67,7 +67,7 @@
   {{-- Navigation links --}}
   <div class="animate-in animate-in-d2 flex items-center justify-center gap-6" style="padding-top: 30px;">
     <a href="{{ route('home') }}" class="btn-outline" style="padding:10px 20px;font-size:14px;">← Ke Beranda</a>
-    <a href="{{ route('faq') }}" class="btn-outline" style="padding:10px 20px;font-size:14px;">❓ Lihat FAQ</a>
+    <a href="{{ route('faq') }}" class="btn-outline" style="padding:10px 20px;font-size:14px;"><i class="fa-solid fa-circle-question mr-1"></i> Lihat FAQ</a>
   </div>
 
 </div>

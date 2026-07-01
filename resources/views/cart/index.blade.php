@@ -3,7 +3,7 @@
 
 @section('content')
 <div class="section-container py-8 md:py-12 animate-in">
-  <h1 class="font-heading text-2xl md:text-3xl font-bold text-stone-900 mb-8">Keranjang Belanja 🛒</h1>
+  <h1 class="font-heading text-2xl md:text-3xl font-bold text-stone-900 mb-8">Keranjang Belanja <i class="fa-solid fa-cart-shopping text-stone-700"></i></h1>
 
   @if(empty($products) || count($products) === 0)
     <div class="card p-12 text-center max-w-lg mx-auto bg-white">
@@ -15,7 +15,7 @@
       <h2 class="font-heading text-xl font-bold text-stone-800 mb-2">Keranjang Anda Kosong</h2>
       <p class="text-stone-500 text-sm mb-6">Anda belum menambahkan paket buku cerita anak ke keranjang.</p>
       <a href="{{ route('home') }}" class="btn-primary px-6 py-2.5 inline-flex items-center gap-2">
-        🏠 Cari Buku Cerita
+        <i class="fa-solid fa-house"></i> Cari Buku Cerita
       </a>
     </div>
   @else
@@ -93,7 +93,7 @@
               </div>
               
               <button type="submit" class="btn-primary w-full justify-center mt-6">
-                Lanjut ke Pembayaran 💳
+                Lanjut ke Pembayaran <i class="fa-solid fa-credit-card ml-1"></i>
               </button>
             </form>
           @else

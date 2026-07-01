@@ -9,6 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <style>
     * { -webkit-tap-highlight-color: transparent; }
     html { scroll-behavior: smooth; }
@@ -228,7 +229,7 @@
       <div class="flex items-center gap-1 sm:gap-3 text-sm font-bold">
         <a href="{{ route('home') }}" class="px-3 py-2 rounded-xl text-stone-600 hover:text-amber-600 hover:bg-amber-50 transition-colors focus-ring" aria-current="@if(request()->routeIs('home')) page @endif">Beranda</a>
         <a href="{{ route('cart.index') }}" class="relative px-3 py-2 rounded-xl text-stone-600 hover:text-amber-600 hover:bg-amber-50 transition-colors focus-ring flex items-center gap-1" aria-current="@if(request()->routeIs('cart.index')) page @endif">
-          <span>🛒</span>
+          <span><i class="fa-solid fa-cart-shopping"></i></span>
           <span class="hidden sm:inline">Keranjang</span>
           @if(session()->has('cart') && count(session('cart')) > 0)
             <span class="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-orange-500 text-[10px] font-black text-white">
@@ -279,15 +280,15 @@
         {{-- Brand col --}}
         <div>
           <a href="{{ route('home') }}" class="font-heading text-2xl font-bold text-stone-900 tracking-tight">
-            📚 CeritaHey
+            <i class="fa-solid fa-book-open text-amber-500 mr-1.5"></i>CeritaHey
           </a>
           <p class="mt-3 text-sm text-stone-500 leading-relaxed" style="max-width:280px;">
             Platform buku cerita digital bergambar full color untuk anak Indonesia.
             Terjangkau, menyenangkan, dan edukatif.
           </p>
           <div class="mt-5 flex items-center gap-3">
-            <span class="badge badge-success text-xs">🔒 Pembayaran Aman</span>
-            <span class="badge badge-warning text-xs">✅ Produk Digital</span>
+            <span class="badge badge-success text-xs"><i class="fa-solid fa-lock"></i> Pembayaran Aman</span>
+            <span class="badge badge-warning text-xs"><i class="fa-solid fa-circle-check"></i> Produk Digital</span>
           </div>
         </div>
 
@@ -295,13 +296,13 @@
         <div>
           <h3 class="text-xs font-bold text-stone-400 uppercase tracking-widest mb-4">Navigasi</h3>
           <ul class="space-y-3 text-sm">
-            <li><a href="{{ route('home') }}" class="text-stone-600 hover:text-amber-600 transition-colors font-medium">🏠 Beranda</a></li>
+            <li><a href="{{ route('home') }}" class="text-stone-600 hover:text-amber-600 transition-colors font-medium"><i class="fa-solid fa-house fa-fw mr-1 text-stone-400"></i>Beranda</a></li>
             @auth
-            <li><a href="{{ route('order.my') }}" class="text-stone-600 hover:text-amber-600 transition-colors font-medium">📦 Pesanan Saya</a></li>
-            <li><a href="{{ route('settings') }}" class="text-stone-600 hover:text-amber-600 transition-colors font-medium">⚙️ Pengaturan</a></li>
+            <li><a href="{{ route('order.my') }}" class="text-stone-600 hover:text-amber-600 transition-colors font-medium"><i class="fa-solid fa-box fa-fw mr-1 text-stone-400"></i>Pesanan Saya</a></li>
+            <li><a href="{{ route('settings') }}" class="text-stone-600 hover:text-amber-600 transition-colors font-medium"><i class="fa-solid fa-gear fa-fw mr-1 text-stone-400"></i>Pengaturan</a></li>
             @else
-            <li><a href="{{ route('login') }}" class="text-stone-600 hover:text-amber-600 transition-colors font-medium">🔑 Masuk</a></li>
-            <li><a href="{{ route('register') }}" class="text-stone-600 hover:text-amber-600 transition-colors font-medium">✨ Daftar Gratis</a></li>
+            <li><a href="{{ route('login') }}" class="text-stone-600 hover:text-amber-600 transition-colors font-medium"><i class="fa-solid fa-right-to-bracket fa-fw mr-1 text-stone-400"></i>Masuk</a></li>
+            <li><a href="{{ route('register') }}" class="text-stone-600 hover:text-amber-600 transition-colors font-medium"><i class="fa-solid fa-wand-magic-sparkles fa-fw mr-1 text-amber-500"></i>Daftar Gratis</a></li>
             @endauth
           </ul>
         </div>
@@ -310,10 +311,10 @@
         <div>
           <h3 class="text-xs font-bold text-stone-400 uppercase tracking-widest mb-4">Informasi</h3>
           <ul class="space-y-3 text-sm">
-            <li><a href="{{ route('about') }}" class="text-stone-600 hover:text-amber-600 transition-colors font-medium">📚 Tentang Kami</a></li>
-            <li><a href="{{ route('faq') }}" class="text-stone-600 hover:text-amber-600 transition-colors font-medium">❓ FAQ</a></li>
-            <li><a href="{{ route('privacy') }}" class="text-stone-600 hover:text-amber-600 transition-colors font-medium">🔐 Kebijakan Privasi</a></li>
-            <li><a href="{{ route('terms') }}" class="text-stone-600 hover:text-amber-600 transition-colors font-medium">⚖️ Syarat & Ketentuan</a></li>
+            <li><a href="{{ route('about') }}" class="text-stone-600 hover:text-amber-600 transition-colors font-medium"><i class="fa-solid fa-book fa-fw mr-1 text-stone-400"></i>Tentang Kami</a></li>
+            <li><a href="{{ route('faq') }}" class="text-stone-600 hover:text-amber-600 transition-colors font-medium"><i class="fa-solid fa-circle-question fa-fw mr-1 text-stone-400"></i>FAQ</a></li>
+            <li><a href="{{ route('privacy') }}" class="text-stone-600 hover:text-amber-600 transition-colors font-medium"><i class="fa-solid fa-shield-halved fa-fw mr-1 text-stone-400"></i>Kebijakan Privasi</a></li>
+            <li><a href="{{ route('terms') }}" class="text-stone-600 hover:text-amber-600 transition-colors font-medium"><i class="fa-solid fa-scale-balanced fa-fw mr-1 text-stone-400"></i>Syarat & Ketentuan</a></li>
           </ul>
         </div>
 
@@ -322,14 +323,14 @@
           <h3 class="text-xs font-bold text-stone-400 uppercase tracking-widest mb-4">Kontak</h3>
           <ul class="space-y-3 text-sm text-stone-600">
             <li>
-              <a href="{{ route('contact') }}" class="text-stone-600 hover:text-amber-600 transition-colors font-medium">📞 Kontak Support</a>
+              <a href="{{ route('contact') }}" class="text-stone-600 hover:text-amber-600 transition-colors font-medium"><i class="fa-solid fa-phone fa-fw mr-1 text-stone-400"></i>Kontak Support</a>
             </li>
             <li class="flex items-start gap-2">
-              <span>📧</span>
+              <span><i class="fa-solid fa-envelope fa-fw mr-1 text-stone-400"></i></span>
               <a href="mailto:aksendigitalkreatif@gmail.com" class="hover:underline">aksendigitalkreatif@gmail.com</a>
             </li>
             <li class="flex items-start gap-2">
-              <span>⏰</span>
+              <span><i class="fa-solid fa-clock fa-fw mr-1 text-stone-400"></i></span>
               <span>Senin–Jumat<br>09.00–17.00 WIB</span>
             </li>
           </ul>

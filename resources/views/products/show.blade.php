@@ -52,19 +52,19 @@
           <h3 class="text-xs font-bold text-stone-400 uppercase tracking-wider">Spesifikasi & Layanan</h3>
           <div class="grid sm:grid-cols-2 gap-3 text-xs text-stone-600">
             <div class="flex items-center gap-2">
-              <span class="text-emerald-500 font-bold">✔</span>
+              <span class="text-emerald-500 font-bold"><i class="fa-solid fa-circle-check"></i></span>
               <span>Format Digital (PDF Full Color)</span>
             </div>
             <div class="flex items-center gap-2">
-              <span class="text-emerald-500 font-bold">✔</span>
+              <span class="text-emerald-500 font-bold"><i class="fa-solid fa-circle-check"></i></span>
               <span>Akses Download Selamanya</span>
             </div>
             <div class="flex items-center gap-2">
-              <span class="text-emerald-500 font-bold">✔</span>
+              <span class="text-emerald-500 font-bold"><i class="fa-solid fa-circle-check"></i></span>
               <span>Bisa Dibuka di HP, Tablet, Laptop</span>
             </div>
             <div class="flex items-center gap-2">
-              <span class="text-emerald-500 font-bold">✔</span>
+              <span class="text-emerald-500 font-bold"><i class="fa-solid fa-circle-check"></i></span>
               <span>Pembayaran Instan & Aman</span>
             </div>
           </div>
@@ -73,10 +73,10 @@
         {{-- Tombol Aksi --}}
         <div class="flex flex-col sm:flex-row gap-3 pt-4 border-t border-stone-100">
           <a href="{{ route('cart.add', [$product, 'redirect' => 'cart']) }}" class="btn-primary w-full justify-center text-center">
-            🚀 Beli Sekarang
+            <i class="fa-solid fa-rocket mr-1"></i> Beli Sekarang
           </a>
           <a href="{{ route('cart.add', $product) }}" class="btn-outline w-full justify-center text-center">
-            🛒 Tambah ke Keranjang
+            <i class="fa-solid fa-cart-plus mr-1"></i> Tambah ke Keranjang
           </a>
         </div>
       </div>
