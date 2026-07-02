@@ -223,8 +223,9 @@
   {{-- Nav --}}
   <nav class="sticky top-0 z-nav bg-white/85 backdrop-blur-xl border-b border-amber-100/60">
     <div class="section-container h-16 flex items-center justify-between">
-      <a href="{{ route('home') }}" class="font-heading text-xl font-bold text-stone-900 tracking-tight focus-ring" aria-label="CeritaHey Beranda">
-        CeritaHey
+      <a href="{{ route('home') }}" class="flex items-center gap-2 font-heading text-xl font-bold text-stone-900 tracking-tight focus-ring" aria-label="CeritaHey Beranda">
+        <img src="{{ asset('storage/images/logo.png') }}" alt="Logo CeritaHey" class="h-8 w-auto object-contain">
+        <span>CeritaHey</span>
       </a>
       <div class="flex items-center gap-1 sm:gap-3 text-sm font-bold">
         <a href="{{ route('home') }}" class="px-3 py-2 rounded-xl text-stone-600 hover:text-amber-600 hover:bg-amber-50 transition-colors focus-ring" aria-current="@if(request()->routeIs('home')) page @endif">Beranda</a>
@@ -279,8 +280,9 @@
 
         {{-- Brand col --}}
         <div>
-          <a href="{{ route('home') }}" class="font-heading text-2xl font-bold text-stone-900 tracking-tight">
-            <i class="fa-solid fa-book-open text-amber-500 mr-1.5"></i>CeritaHey
+          <a href="{{ route('home') }}" class="flex items-center gap-2.5 font-heading text-2xl font-bold text-stone-900 tracking-tight">
+            <img src="{{ asset('storage/images/logo.png') }}" alt="Logo CeritaHey" class="h-9 w-auto object-contain">
+            <span>CeritaHey</span>
           </a>
           <p class="mt-3 text-sm text-stone-500 leading-relaxed" style="max-width:280px;">
             Platform buku cerita digital bergambar full color untuk anak Indonesia.
